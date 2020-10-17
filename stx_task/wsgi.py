@@ -1,5 +1,5 @@
 """
-WSGI config for stx project.
+WSGI config for stx_task project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -8,9 +8,8 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 """
 
 import os
-
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stx.settings')
-
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stx_task.settings')
+print('a')
 application = get_wsgi_application()
