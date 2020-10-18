@@ -15,3 +15,4 @@ class Book(models.Model):
     thumbnail = models.URLField(max_length=255, null=True)
     language = models.CharField(max_length=10,null=True)
 
+
