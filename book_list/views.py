@@ -1,8 +1,8 @@
-from django.views.generic.list import ListView
-
+from django.shortcuts import render
+from book_list.filters import BookFilter
 from book_list.models import Book
 
-class BookListView(ListView):
-    model = Book
-    paginate_by = 100
-    template_name = 'book/home.html'
+def book_list(request):
+    book_list = Book.objects.all()
+    book_filter = BookFilter(request.GET, queryset=book_list)
+    return render(request, 'book/home.html', {'filter': book_filter})
