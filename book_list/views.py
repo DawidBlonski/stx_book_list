@@ -2,7 +2,6 @@ from django.shortcuts import render
 from book_list.filters import BookFilter
 from book_list.models import Book
 from django.views.generic import UpdateView,CreateView
-from django.shortcuts import get_object_or_404
 
 def book_list(request):
     book_list = Book.objects.all()
