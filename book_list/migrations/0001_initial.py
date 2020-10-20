@@ -7,28 +7,48 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Author',
+            name="Author",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=150)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=150)),
             ],
         ),
         migrations.CreateModel(
-            name='Book',
+            name="Book",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('published_date', models.DateField(null=True)),
-                ('isbn_number', models.IntegerField(null=True)),
-                ('page_count', models.IntegerField(null=True)),
-                ('thumbnail', models.URLField(max_length=255, null=True)),
-                ('language', models.CharField(max_length=10, null=True)),
-                ('authors', models.ManyToManyField(related_name='authors', to='book_list.Author')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("published_date", models.DateField(null=True)),
+                ("isbn_number", models.IntegerField(null=True)),
+                ("page_count", models.IntegerField(null=True)),
+                ("thumbnail", models.URLField(max_length=255, null=True)),
+                ("language", models.CharField(max_length=10, null=True)),
+                (
+                    "authors",
+                    models.ManyToManyField(
+                        related_name="authors", to="book_list.Author"
+                    ),
+                ),
             ],
         ),
     ]
