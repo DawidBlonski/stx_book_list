@@ -37,5 +37,5 @@ class GoogleApiView(FormView):
         author = form.cleaned_data["author"]
         if not key_words:
             redirect("google-api")
-        books_to_database(key_words)
+        books_to_database(key_words,title,author)
         return redirect("book-list")
