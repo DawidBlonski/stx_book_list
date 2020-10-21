@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "rest_book.apps.RestBookConfig",
     "django_filters",
     "rest_framework",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
