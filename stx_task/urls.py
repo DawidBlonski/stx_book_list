@@ -10,6 +10,8 @@ schema_view = get_schema_view(
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
+    url = "https://rocky-beyond-52741.herokuapp.com/",
+
 )
 urlpatterns = [
     path("admin/", admin.site.urls),
