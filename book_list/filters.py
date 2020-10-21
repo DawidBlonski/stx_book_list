@@ -1,5 +1,7 @@
 import django_filters
+
 from book_list.models import Book
+
 
 class BookFilter(django_filters.FilterSet):
     title = django_filters.CharFilter(lookup_expr="icontains", field_name="title")

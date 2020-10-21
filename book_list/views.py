@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView
+from django.views.generic.edit import FormView
+
 from book_list.filters import BookFilter
 from book_list.forms import ApiForms
-from book_list.models import Book
-from django.views.generic import UpdateView, CreateView
-from django.views.generic.edit import FormView
-from django.urls import reverse_lazy
 from book_list.google_api import books_to_database
+from book_list.models import Book
 
 
 def book_list(request):
@@ -37,5 +38,5 @@ class GoogleApiView(FormView):
         author = form.cleaned_data["author"]
         if not key_words:
             redirect("google-api")
-        books_to_database(key_words,title,author)
+        books_to_database(key_words, title, author)
         return redirect("book-list")

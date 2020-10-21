@@ -1,10 +1,14 @@
-import json
-import requests
-import urllib.parse
-from book_list.models import Book
 import datetime
+import json
 import re
+import urllib.parse
+
+import requests
+
+from book_list.models import Book
+
 GOOGLE_API = "https://www.googleapis.com/books/v1/volumes"
+
 
 def create_query(key_words, title, author):
     if not key_words:
@@ -16,10 +20,12 @@ def create_query(key_words, title, author):
         key_words += f"+inauthor:{urllib.parse.quote(author)}"
     return key_words
 
+
 def create_published_date(published_date):
     if published_date:
         year = re.search(r"\d{4}", published_date).group()
         return int(year)
+
 
 def authors_to_string(authors):
     if authors:
@@ -32,6 +38,7 @@ def get_isbn(isbns):
         None,
     )
 
+
 def parse_element(element):
     volume_info = element.get("volumeInfo", {})
     isbn_numbers = volume_info.get("industryIdentifiers", {})
@@ -42,8 +49,9 @@ def parse_element(element):
         "page_count": volume_info.get("pageCount", None),
         "language": volume_info.get("language", None),
         "isbn_number": get_isbn(isbn_numbers),
-        "thumbnail": volume_info.get("imageLinks", {}).get("thumbnail", None)
+        "thumbnail": volume_info.get("imageLinks", {}).get("thumbnail", None),
     }
+
 
 def get_books(key_words, title=None, author=None):
     parameters = create_query(key_words, title, author)
@@ -56,6 +64,7 @@ def get_books(key_words, title=None, author=None):
         return
     for element in json_data:
         yield parse_element(element)
+
 
 def books_to_database(key_words, title=None, author=None):
     Book.objects.bulk_create([Book(**i) for i in get_books(key_words, title, author)])

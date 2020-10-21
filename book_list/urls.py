@@ -1,6 +1,7 @@
 from django.urls import path
 
-from book_list.views import book_list, BookCreateView, BookUpdateView, GoogleApiView
+from book_list.views import (BookCreateView, BookUpdateView, GoogleApiView,
+                             book_list)
 
 urlpatterns = [
     path("", book_list, name="book-list"),

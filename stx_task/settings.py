@@ -1,6 +1,6 @@
-from pathlib import Path
-from distutils.util import strtobool
 import os
+from distutils.util import strtobool
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     "book_list.apps.BookListConfig",
     "rest_book.apps.RestBookConfig",
     "django_filters",
-    'rest_framework'
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
