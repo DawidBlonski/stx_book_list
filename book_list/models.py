@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-
 class Book(models.Model):
     title = models.CharField(max_length=255)
     authors = models.CharField(max_length=150, null=True)
